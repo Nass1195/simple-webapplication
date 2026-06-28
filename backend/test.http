@@ -1,0 +1,28 @@
+get http://localhost:8000
+
+###
+# @name loginRequest
+POST  http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+    "userName": "nasser",
+    "password": "1234"
+
+}
+
+###
+
+POST http://localhost:8000/user/register
+Content-Type: application/json
+
+{
+    "userName": "nasser",
+    "password": "1234"
+
+}
+
+### 
+@authToken = {{loginRequest.response.body.access_token}}
+GET http://localhost:8000/user/profile
+Authorization: Bearer {{authToken}}
